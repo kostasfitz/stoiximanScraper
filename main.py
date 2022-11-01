@@ -1,8 +1,8 @@
 # stoiximan scraper
 
 import time
+from datetime import datetime
 import pandas as pd
-import openpyxl
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -27,9 +27,22 @@ time.sleep(1)
 table = driver.find_element(by=By.XPATH, value="//table[@class='events-list__grid']")
 rows = table.find_elements(by=By.XPATH, value="//tr[@class='events-list__grid__event']")
 
-for row in rows:
+dataframe = pd.DataFrame({'Date': [],
+                          'Home': [],
+                          'Away': [],
+                          'HomeOdds': [],
+                          'AwayOdds': []})
+
+for row in rows[:]:
     event = row.get_attribute('innerText')
-    date, time, home, away, dummy1, home_odds, away_odds, dummy2 = event.split('\n')
-    print(date, time, home, away, home_odds, away_odds)
+    date, time, home, away, dummy1, home_odds, away_odds, *_ = event.split('\n')
+    data = [date+' '+time, home, away, home_odds, away_odds]
+    dataframe.loc[len(dataframe)] = data
+
+# export data as csv
+now = datetime.now()
+datetime_str = now.strftime("%Y-%m-%d %H:%M:%S")
+
+dataframe.to_csv(datetime_str+'.csv')
 
 driver.close()

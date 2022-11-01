@@ -41,7 +41,7 @@ for row in rows[:]:
 
 # export data as csv
 now = datetime.now()
-datetime_str = now.strftime("%Y-%m-%d %H:%M:%S")
+datetime_str = now.strftime("%d%m%Y%H%M%S")
 
 dataframe.to_csv(datetime_str+'.csv')
 

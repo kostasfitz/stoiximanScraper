@@ -29,22 +29,7 @@ rows = table.find_elements(by=By.XPATH, value="//tr[@class='events-list__grid__e
 
 for row in rows:
     event = row.get_attribute('innerText')
-    date, time, home, away, w, home_odds, away_odds, y = event.split('\n')
+    date, time, home, away, dummy1, home_odds, away_odds, dummy2 = event.split('\n')
     print(date, time, home, away, home_odds, away_odds)
-
-# for row in rows[:2]:
-#     participants = row.find_elements(by=By.XPATH, value="//span[@class='events-list__grid__info__main__participants__participant-name']")
-#     for participant in participants:
-#         print(participant.get_attribute('innerText'))
-#     # away = participants.pop()
-#     # home = participants.pop()
-#     # print(home.get_attribute('innerText'))
-#     # print(away.get_attribute('innerText'))
-#
-#     #print(row.get_attribute('innerText'))
-#     # x = row.find_elements(by=By.TAG_NAME, value="button")
-#     # for y in x:
-#     #     print(y.get_attribute('innerText'))
-
 
 driver.close()

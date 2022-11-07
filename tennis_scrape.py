@@ -33,7 +33,7 @@ def tennis_scrape(driver_path, website):
         event = row.get_attribute('innerText')
         date, time, home, away, dummy1, home_odds, away_odds, *_ = event.split('\n')
         _, home_last, *_ = home.split(' ')
-        _, away_last, *_ = away.split(' ')
+        *_, away_last = away.split(' ')
         data = [date + ' ' + time, home_last, away_last, home_odds, away_odds]
         dataframe.loc[len(dataframe)] = data
 

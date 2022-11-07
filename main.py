@@ -1,11 +1,6 @@
 # stoiximan scraper
 
 from tennis_scrape import tennis_scrape
-import time
-from datetime import datetime
-import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 
 # scraper setup

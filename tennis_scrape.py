@@ -3,7 +3,7 @@ import time as t
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
-import json
+
 
 
 def tennis_scrape(driver_path, website):

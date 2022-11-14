@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 
 
-
 def tennis_scrape(driver_path, website):
     driver = webdriver.Chrome(driver_path)
     driver.get(website)
